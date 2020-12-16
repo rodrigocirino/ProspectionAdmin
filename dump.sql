@@ -1,3 +1,38 @@
+use vendas;
+
+create table cliente
+(
+    id       int auto_increment
+        primary key,
+    nome     varchar(255) null,
+    email    varchar(255) null,
+    telefone varchar(50) null
+);
+
+create table vendedor
+(
+    id    int auto_increment
+        primary key,
+    nome  varchar(255) not null,
+    email varchar(50)  not null,
+    senha varchar(50)  not null
+);
+
+create table prospectos
+(
+    id          int auto_increment
+        primary key,
+    data        datetime null,
+    quente      tinyint(1) null,
+    id_cliente  int null,
+    id_vendedor int null,
+    constraint prospectos_cliente_id_fk
+        foreign key (id_cliente) references cliente (id),
+    constraint prospectos_vendedor_id_fk
+        foreign key (id_vendedor) references vendedor (id)
+);
+
+
 INSERT INTO vendas.cliente (id, nome, email, telefone) VALUES (8, 'Primeiro Cliente', 'primeiro@cliente.com', '41999998888');
 INSERT INTO vendas.cliente (id, nome, email, telefone) VALUES (9, 'Segundo Cliente', 'segundo@cliente.com', '554133256565');
 INSERT INTO vendas.cliente (id, nome, email, telefone) VALUES (10, 'Joao Novo', 'novo@email.com', '662255412541');
@@ -17,7 +52,7 @@ INSERT INTO vendas.vendedor (id, nome, email, senha) VALUES (3, 'Rodrigo Cirino'
 INSERT INTO vendas.vendedor (id, nome, email, senha) VALUES (4, 'Marcia Botelho', 'marcia@botelho.com', '65784');
 INSERT INTO vendas.vendedor (id, nome, email, senha) VALUES (5, 'Fulano de Tal', 'fulano@detal.com', '6598451');
 INSERT INTO vendas.vendedor (id, nome, email, senha) VALUES (6, 'Chico da Princesa', 'chico@daprincesa.com', '55');
-INSERT INTO vendas.vendedor (id, nome, email, senha) VALUES (7, 'João', 'joao@email.com', '123');
+INSERT INTO vendas.vendedor (id, nome, email, senha) VALUES (7, 'Jo�o', 'joao@email.com', '123');
 
 
 
@@ -36,3 +71,6 @@ INSERT INTO vendas.prospectos (id, data, quente, id_cliente, id_vendedor) VALUES
 INSERT INTO vendas.prospectos (id, data, quente, id_cliente, id_vendedor) VALUES (58, '2020-03-17 00:00:00', 1, 18, 1);
 INSERT INTO vendas.prospectos (id, data, quente, id_cliente, id_vendedor) VALUES (59, '2020-03-17 00:00:00', 1, 15, 1);
 INSERT INTO vendas.prospectos (id, data, quente, id_cliente, id_vendedor) VALUES (60, '2020-03-17 00:00:00', 1, 10, 1);
+
+
+

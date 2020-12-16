@@ -1,7 +1,8 @@
 version: '3'
 
 services:
-
+  data:
+    build: ./data-dump.sql
   mysql:
     image: mysql:latest
     container_name: mysql_server

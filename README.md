@@ -34,6 +34,9 @@ $ docker-compose up
 
 # Acessar a url
 # http://localhost:8080
+
+# Se aparecer Error Network o banco pode estar sem tabelas, inicie o container mysql_server e rode
+# $ docker exec -it mysql_server /bin/sh -c "mysql -uroot -pmysql < docker-entrypoint-initdb.d/dump.sql"
 ```
 
 ## Comentários
