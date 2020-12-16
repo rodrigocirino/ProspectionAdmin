@@ -1,8 +1,7 @@
 version: '3'
 
 services:
-  data:
-    build: ./data-dump.sql
+
   mysql:
     image: mysql:latest
     container_name: mysql_server
@@ -15,6 +14,7 @@ services:
       MYSQL_ROOT_PASSWORD: mysql
     volumes:
       - ./.devops/mysql:/var/lib/mysql
+      - ./dump.sql:/docker-entrypoint-initdb.d/dump.sql
     networks:
       - stack-network
 
