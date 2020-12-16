@@ -1,0 +1,25 @@
+{
+  "name": "backnode",
+  "description": "A Vue.js project para CRUD de clientes e seus prospectos",
+  "version": "1.0.0",
+  "author": "Rodrigo (rodrigo@email.com)",
+  "license": "MIT",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js --ignore __tests__",
+    "serve": "nodemon index.js",
+    "test": "jest  --forceExit"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "consign": "^0.1.6",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "jest": "^26.5.2",
+    "supertest": "^5.0.0"
+  }
+}
