@@ -5,12 +5,7 @@
     <div class="container">
 
       <!--  HEADER  -->
-      <div class="py-3 text-center">
-
-        <h2>Vendedores</h2>
-        <p class="lead">Clique nos registros para editar e remover, cadastre-se para realizar um login, altere a senha !</p>
-
-      </div>
+      <chapter v-bind:chapter_title="pageTitle" v-bind:chapter_content="pageTitleContent"></chapter>
 
       <!--  CORPO -->
       <div class="row">
@@ -22,12 +17,12 @@
 
           <h4 v-if="responseData" class="d-flex justify-content-between align-items-center mb-3">
             <span class="text-muted">Registros</span>
-            <span class="badge badge-secondary badge-pill"> {{ Object.keys(this.responseData).length }} </span>
+            <span class="badge badge-secondary badge-pill"> {{ responseDataSize }} </span>
           </h4>
 
-          <b-table id="my-table" ref="table" :items="responseData" :fields="fields"
-                   small hover selectable show-empty empty-text="Nenhum resultado disponível"
-                   responsive="true" select-mode="single" selected-variant="secondary"
+          <b-table id="my-table" ref="table" :fields="fields" :items="responseData"
+                   empty-text="Nenhum resultado disponível" hover responsive="true" select-mode="single" selectable
+                   selected-variant="secondary" show-empty small
                    striped @row-selected="onRowSelected">
 
           </b-table>
@@ -140,11 +135,17 @@
 
 <script>
 import {email, minLength, required} from "vuelidate/lib/validators";
+import Chapter from "@/components/Chapter";
 
 export default {
   name: 'Vendedor',
+  components: {
+    chapter: Chapter
+  },
   data() {
     return {
+      pageTitle:'Vendedores',
+      pageTitleContent:'Clique nos registros para editar e remover, cadastre-se para realizar um login, altere a senha !',
       disableEmail: false,
       responseData: undefined,
       submitStatus: undefined,
@@ -159,11 +160,16 @@ export default {
         min: 'Campo com limitação mínima de caracteres.'
       },
       fields: [
-        { key: 'id', label: 'Cód' },
-          'nome',
-          'email',
-        { key: 'senha', label: 'Senha', formatter: 'hideSenha' },
+        {key: 'id', label: 'Cód'},
+        'nome',
+        'email',
+        {key: 'senha', label: 'Senha', formatter: 'hideSenha'},
       ]
+    }
+  },
+  computed: {
+    responseDataSize() {
+      return Object.keys(this.responseData).length;
     }
   },
   validations: {
@@ -190,7 +196,7 @@ export default {
     }
   },
   methods: {
-    hideSenha(data){
+    hideSenha(data) {
       return '*'.repeat(data.length);
     },
     clean() {

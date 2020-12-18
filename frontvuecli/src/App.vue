@@ -8,7 +8,7 @@
 
       <router-link v-if="this.$store.state.logged!==true" to="/login" class="ml-5 mr-5"> Login </router-link>
       <router-link v-if="this.$store.state.logged===true" to="/login" v-on:click.native="logout()" class="ml-5 mr-5 text-danger"> Logout </router-link>
-      <b-badge v-if="this.$store.state.emailLoggedIn" variant="info" size="lg"> {{ this.$store.state.emailLoggedIn }} </b-badge>
+      <b-badge v-if="this.$store.state.emailLoggedIn" variant="primary"> {{ this.$store.state.emailLoggedIn }} </b-badge>
 
     </div>
 
@@ -97,7 +97,7 @@ body{
     font-weight: bold;
     color: #2c3e50;
     &.router-link-exact-active {
-      color: #42b983;
+      color: var(--primary);
     }
   }
 }

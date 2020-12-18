@@ -5,12 +5,7 @@
     <div class="container">
 
       <!--  HEADER  -->
-      <div class="py-3 text-center">
-
-        <h2>Clientes</h2>
-        <p class="lead">Clique nos registros para editar e remover, cadastre no formulário ao lado!.</p>
-
-      </div>
+      <chapter v-bind:chapter_title="pageTitle" v-bind:chapter_content="pageTitleContent"></chapter>
 
       <!--  CORPO -->
       <div class="row">
@@ -22,7 +17,7 @@
 
           <h4 v-if="responseData" class="d-flex justify-content-between align-items-center mb-3">
             <span class="text-muted">Registros</span>
-            <span class="badge badge-secondary badge-pill"> {{ Object.keys(this.responseData).length }} </span>
+            <span class="badge badge-secondary badge-pill"> {{ responseDataSize }} </span>
           </h4>
 
           <b-table id="my-table" ref="table" :items="responseData" empty-text="Nenhum resultado disponível" hover
@@ -137,13 +132,18 @@
 </template>
 
 <script>
-
 import {email, minLength, numeric, required} from "vuelidate/lib/validators";
+import Chapter from '@/components/Chapter';
 
 export default {
   name: 'Cliente',
+  components: {
+    chapter: Chapter
+  },
   data() {
     return {
+      pageTitle: 'Clientes',
+      pageTitleContent: 'Clique nos registros para editar e remover, cadastre no formulário ao lado!.',
       selected: undefined,
       submitStatus: undefined,
       id_cliente: undefined,
@@ -158,6 +158,11 @@ export default {
         numeric: 'Campo deve ser numérico.',
         min: 'Campo com limitação mínima de caracteres.'
       }
+    }
+  },
+  computed:{
+    responseDataSize(){
+      return Object.keys(this.responseData).length;
     }
   },
   validations: {

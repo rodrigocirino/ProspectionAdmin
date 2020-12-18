@@ -4,19 +4,13 @@
     <div class="container">
 
       <!--  HEADER  -->
-      <div class="py-3 text-center">
-        <h2>Manutenção dos prospectos</h2>
-        <p class="lead">Clique nos registros para editar e remover, pesquise por prospectos 'quentes' no campo indicado !</p>
-      </div>
+      <chapter v-bind:chapter_title="pageTitle" v-bind:chapter_content="pageTitleContent"></chapter>
 
       <!--  CORPO -->
       <b-row>
         <!--TABELA-->
         <div class="col-12">
-          <h4 v-if="responseData" class="d-flex justify-content-between align-items-center mb-3">
-            <span class="text-muted">Registros</span>
-            <span class="badge badge-secondary badge-pill"> {{ Object.keys(this.responseData).length }} </span>
-          </h4>
+
           <b-row>
             <b-col>
               <b-form-group
@@ -42,6 +36,11 @@
             </b-col>
           </b-row>
 
+          <h4 v-if="responseData" class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-muted">Registros</span>
+            <span class="badge badge-secondary badge-pill"> {{ responseDataSize }} </span>
+          </h4>
+
           <b-table id="my-table" ref="table" :fields="fields" :filter="filter" :items="responseData" hover
                    responsive select-mode="single" selectable selected-variant="secondary"
                    show-empty empty-text="Nenhum resultado disponível" small striped
@@ -66,7 +65,7 @@
             <div>
               <b-form>
                 <b-form-checkbox v-model="checked" :disabled="!this.selected || quente"
-                                 name="check-button" size="lg"  switch >
+                                 name="check-button" size="lg" switch>
                   Deseja alterar a temperatura da prospecção
                   <span v-if="selected"> n&deg; {{ this.selected.pid }} ? </span>
                   <b-button :disabled="!this.selected" variant="primary" @click="editar()">
@@ -80,7 +79,7 @@
 
               <b-form>
                 <label class="mr-2">Deseja excluir a prospecção </label>
-                <strong  v-if="selected" class="mr-2"> n&deg; {{ this.selected.pid }} </strong>
+                <strong v-if="selected" class="mr-2"> n&deg; {{ this.selected.pid }} </strong>
                 <b-button :disabled="!this.selected" variant="danger" @click="remover()">
                   <b-icon aria-hidden="true" icon="trash"></b-icon>
                   Remover
@@ -98,16 +97,27 @@
 </template>
 
 <script>
+import Chapter from '@/components/Chapter';
 
 export default {
   name: 'Home',
+  components: {
+    chapter: Chapter
+  },
   watch: {
     selected() {
       this.checked = this.selected ? (this.selected.quente === 1 ? true : false) : false;
     }
   },
+  computed: {
+    responseDataSize() {
+      return Object.keys(this.responseData).length;
+    }
+  },
   data() {
     return {
+      pageTitle:'Manutenção dos prospectos',
+      pageTitleContent:'Clique nos registros para editar e remover, pesquise por prospectos "quentes" no campo indicado !',
       filter: '',
       selected: undefined,
       checked: undefined,

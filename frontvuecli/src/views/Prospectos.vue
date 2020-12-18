@@ -5,13 +5,7 @@
     <div class="container">
 
       <!--  HEADER  -->
-      <div class="py-3 text-center">
-
-        <h2>Prospectos</h2>
-        <p class="lead">Cadastre um novo contato no formulário abaixo !.</p>
-
-      </div>
-
+      <chapter v-bind:chapter_content="pageTitleContent" v-bind:chapter_title="pageTitle"></chapter>
 
       <b-row class="justify-content-center">
         <!--FORMULARIO        -->
@@ -23,7 +17,7 @@
             <b-form-group id="bgroup1" label="Data" label-for="inp1">
               <div class="input-group">
                 <div class="input-group-prepend">
-                  <span class="input-group-text"> <b-icon icon="person" variant="secondary"></b-icon> </span>
+                  <span class="input-group-text"> <b-icon icon="alarm" variant="secondary"></b-icon> </span>
                 </div>
 
                 <b-form-datepicker
@@ -65,31 +59,41 @@
 
             <!-- CLIENTE -->
             <b-form-group id="bgroup3" label="Cliente" label-for="inp3">
-              <b-form-select
-                  id="inp3"
-                  v-model="$v.id_cliente.$model"
-                  :options="options1"
-                  :state="validateState('id_cliente')"
-                  aria-describedby="live3"
-                  name="inp3"
-              ></b-form-select>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"> <b-icon icon="people" variant="secondary"></b-icon> </span>
+                </div>
+                <b-form-select
+                    id="inp3"
+                    v-model="$v.id_cliente.$model"
+                    :options="options1"
+                    :state="validateState('id_cliente')"
+                    aria-describedby="live3"
+                    name="inp3"
+                ></b-form-select>
 
-              <b-form-invalid-feedback id="live3">{{ this.err.required }}</b-form-invalid-feedback>
+                <b-form-invalid-feedback id="live3">{{ this.err.required }}</b-form-invalid-feedback>
+              </div>
             </b-form-group>
 
             <!-- VENDEDOR -->
 
             <b-form-group id="bgroup4" label="Vendedor" label-for="inp4">
-              <b-form-select
-                  id="inp4"
-                  v-model="$v.id_vendedor.$model"
-                  :options="options2"
-                  :state="validateState('id_vendedor')"
-                  aria-describedby="live4"
-                  name="inp4"
-              ></b-form-select>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"> <b-icon icon="people" variant="secondary"></b-icon> </span>
+                </div>
+                <b-form-select
+                    id="inp4"
+                    v-model="$v.id_vendedor.$model"
+                    :options="options2"
+                    :state="validateState('id_vendedor')"
+                    aria-describedby="live4"
+                    name="inp4"
+                ></b-form-select>
 
-              <b-form-invalid-feedback id="live4">{{ this.err.required }}</b-form-invalid-feedback>
+                <b-form-invalid-feedback id="live4">{{ this.err.required }}</b-form-invalid-feedback>
+              </div>
             </b-form-group>
 
 
@@ -115,9 +119,13 @@
 
 <script>
 import {minValue, required} from "vuelidate/lib/validators";
+import Chapter from "@/components/Chapter";
 
 export default {
   name: 'Prospectos',
+  components: {
+    chapter: Chapter
+  },
   watch: {
     selected() {
       this.checked = this.selected ? (this.selected.quente === 1 ? true : false) : false;
@@ -125,6 +133,8 @@ export default {
   },
   data() {
     return {
+      pageTitle: 'Prospectos',
+      pageTitleContent: 'Cadastre um novo contato no formulário abaixo !.',
       filter: '',
       selected: undefined,
       checked: undefined,
@@ -242,7 +252,6 @@ export default {
             if (response.status === 200) {
               let noption = [];
               for (var key in response.data) {
-                console.log(response.data[key]);
                 noption = {
                   value: response.data[key].id,
                   text: (response.data[key].nome + ' ' + response.data[key].email)
