@@ -1,12 +1,13 @@
 
 # Sistema operacional para prospecção e vendas
 
+<!--
 > Produzido exclusivamente para o processo seletivo da empresa Leads2B.
 > 
 > Autor: Rodrigo Cirino de Andrade
 > 
 > Data: Dezembro/2020
-
+-->
 
 ## Tecnologias
 
@@ -47,9 +48,10 @@ Frontend foi feito usando Vuejs + Axios, e layout com Bootstrap atendendo o requ
 podendo ser aberto no notebook, celular ou tablet.
 
 Backend foi feito usando Nodejs + Express, escolhi Node por já estar trabalhando o front com Vuejs, 
-e por ser uma API mais simples sem muitas integrações externas, mas me sinto confortável em fazer em PHP, Java e Python.
+e por ser uma API mais simples sem muitas integrações externas
+<!--, mas me sinto confortável em fazer em PHP, Java e Python.-->
 
-
+<!--
 ### Conceitos aplicados
 
 Layout responsivo usando o conceito de flexbox do Bootstrap.
@@ -80,6 +82,7 @@ Apesar de não ser expert em UX fiz o possível para usar icons e cores que comb
 
 Criação de testes automatizados
 
+-->
 
 ## Apresentação
 
