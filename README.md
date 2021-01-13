@@ -1,5 +1,5 @@
 
-# Sistema operacional para prospecção de vendas
+## Sistema operacional para prospecção de vendas
 
 <!--
 > Produzido exclusivamente para o processo seletivo da empresa Leads2B.
@@ -7,27 +7,14 @@
 > Autor: Rodrigo Cirino de Andrade
 > 
 > Data: Dezembro/2020
-
-
-## Tecnologias
-
-*entre outros presentes no package.json*
-
-| Tech        | Version           | 
-| ------------- |:-------------:| 
-|   Nodejs   |   12.17    |
-|   MySQL   |   8.0.22    |
-|   Vue   |   2.6    |
-|   Vue-cli   |   4.5    |
-|   Vuex   |   2.6    |
-|   VueRouter   |   3.2    |
-|   Bootstrap-vue   |   2.17    |
-|   Docker   |   20.10    |
-|   docker-compose   |   1.27    |
-
 -->
 
-## Instalação
+### Tecnologias
+
+> Nodejs, MySQL, Vue, Vue-cli, Vuex, VueRouter, Bootstrap-vue, Docker, Docker-compose
+> *entre outros presentes no package.json*
+
+### Instalação
 
 ```bash
 # Executar o docker-compose presente na raiz do projeto.
@@ -40,11 +27,13 @@
   $ docker exec -it mysql_server /bin/sh -c "mysql -uroot -pmysql < docker-entrypoint-initdb.d/dump.sql"
 ```
 
-## Comentários
+### Comentários
+
+Layout é criação própria usando Bootstrap e Vuelidade.
 
 Projeto é uma SPA - Single Page Application em Docker Compose.
 
-Frontend foi feito usando Vuejs + Axios, e layout com Bootstrap.
+Frontend foi feito usando Vuejs + Axios.
 
 Backend foi feito usando Nodejs + Express.
 <!--, mas me sinto confortável em fazer em PHP, Java e Python.-->
@@ -82,7 +71,7 @@ Criação de testes automatizados
 
 -->
 
-## Apresentação
+### Apresentação
 
 ![alt text](screenshots/login_success.png)
 
