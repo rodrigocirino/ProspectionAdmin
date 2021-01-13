@@ -75,9 +75,12 @@ Criação de testes automatizados
 
 ![alt text](screenshots/login_success.png)
 
+<!--
 ---
 
 ![alt text](screenshots/login_error.png)
+
+-->
 
 ---
 
