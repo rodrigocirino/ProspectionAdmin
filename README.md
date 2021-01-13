@@ -1,5 +1,5 @@
 
-# Sistema operacional para prospecção e vendas
+# Sistema operacional para prospecção de vendas
 
 <!--
 > Produzido exclusivamente para o processo seletivo da empresa Leads2B.
@@ -7,7 +7,7 @@
 > Autor: Rodrigo Cirino de Andrade
 > 
 > Data: Dezembro/2020
--->
+
 
 ## Tecnologias
 
@@ -25,30 +25,28 @@
 |   Docker   |   20.10    |
 |   docker-compose   |   1.27    |
 
-
+-->
 
 ## Instalação
 
 ```bash
 # Executar o docker-compose presente na raiz do projeto.
-$ docker-compose up
+  $ docker-compose up
 
 # Acessar a url
-# http://localhost:8080
+  http://localhost:8080
 
 # Se aparecer Error Network o banco pode estar sem tabelas, inicie o container mysql_server e rode
-# $ docker exec -it mysql_server /bin/sh -c "mysql -uroot -pmysql < docker-entrypoint-initdb.d/dump.sql"
+  $ docker exec -it mysql_server /bin/sh -c "mysql -uroot -pmysql < docker-entrypoint-initdb.d/dump.sql"
 ```
 
 ## Comentários
 
-Projeto é uma SPA - Single Page Application
+Projeto é uma SPA - Single Page Application em Docker Compose.
 
-Frontend foi feito usando Vuejs + Axios, e layout com Bootstrap atendendo o requisito de responsivo, 
-podendo ser aberto no notebook, celular ou tablet.
+Frontend foi feito usando Vuejs + Axios, e layout com Bootstrap.
 
-Backend foi feito usando Nodejs + Express, escolhi Node por já estar trabalhando o front com Vuejs, 
-e por ser uma API mais simples sem muitas integrações externas
+Backend foi feito usando Nodejs + Express.
 <!--, mas me sinto confortável em fazer em PHP, Java e Python.-->
 
 <!--
